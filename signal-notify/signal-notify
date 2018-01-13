@@ -1,0 +1,14 @@
+#!/bin/python
+"""Creates alert in i3-bar for signal messenger"""
+
+from time import sleep
+from subprocess import call, Popen, PIPE
+
+def main():
+  process = Popen(["signal-desktop"], stdout=PIPE)
+  for line in process.stdout:
+    if line.find(b"draw attention") != -1:
+      call("wmctrl -F -r Signal -b add,demands_attention".split())
+
+if __name__ == "__main__":
+  main()

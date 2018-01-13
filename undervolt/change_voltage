@@ -1,0 +1,6 @@
+#!/bin/bash
+
+modprobe msr
+wrmsr 0x150 0x80000011f1e00000 #f3400000 #f4800000 #f5c00000 # CPU core -100 mV
+wrmsr 0x150 0x80000111f0a00000 #f1400000 #f1e00000 # GPU core -120 mV
+wrmsr 0x150 0x80000211f1e00000 #f3400000 #f4800000 #f5c00000 # CPU cache -100 mV
